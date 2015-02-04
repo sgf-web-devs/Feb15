@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" ng-app="sgfwebdevstestapp" >
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Hello, world!</h1>
+        <h1>{{'Hello' | universe}}</h1>
     </div>
+
+    <script type="text/javascript" src="js/libs/angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js" /></script>
 </body>
 </html>
