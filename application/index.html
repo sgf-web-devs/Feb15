@@ -13,19 +13,34 @@
 <body>
     <div class="container" ng-controller="ColorController">
 
-        <add-color-to-list add-color-callback="addColorToList(name, hex)"></add-color-to-list>
-        <hr />
-        <sort-color-list-selector></sort-color-list-selector>
+        <div ng-show="displayPanel === 'list'">
+            <add-color-to-list add-color-callback="addColorToList(name, hex)"></add-color-to-list>
+            <hr />
+            <sort-color-list-selector></sort-color-list-selector>
 
-        <table class="table table-condensed tablestriped">
-            <tr style="background-color: {{color.hex}}"  ng-repeat="color in colorList | orderBy:selectedOrderByField | reverse">
-                <td>{{color.name}}</td>
-                <td>{{color.hex}}</td>
-                <td><input ng-model="color.name"></td>
-                <td><input ng-model="color.hex"></td>
-                <td><input type="button" class="btn btn-default" value="Delete" ng-click="deleteColor(color)" /></td>
-            </tr>
-        </table>
+            <table class="table table-condensed tablestriped">
+                <tr style="background-color: {{color.hex}}"  ng-repeat="color in colorList | orderBy:selectedOrderByField | reverse">
+                    <td>{{color.name}}</td>
+                    <td>{{color.hex}}</td>
+                    <td><input type="button" class="btn btn-default" value="Delete" ng-click="deleteColor(color)" /></td>
+                    <td><input type="button" class="btn btn-default" value="Edit" ng-click="editColor(color)" /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div ng-show="displayPanel === 'edit'">
+            <form class="well">
+                <div class="form-group">
+                    <label>Color Name</label>
+                    <input type="text" class="form-control" placeholder="Red" ng-model="selectedColor.name">
+                </div>
+                <div class="form-group">
+                    <label>Color Hex</label>
+                    <input type="text" class="form-control" placeholder="#FF0000" ng-model="selectedColor.hex">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="displayList()">Done Editing</button>
+            </form>
+        </div>
     </div>
 
     <script type="text/javascript" src="js/libs/angular/angular.min.js"></script>

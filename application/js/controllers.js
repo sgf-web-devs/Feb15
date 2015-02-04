@@ -4,6 +4,8 @@ angular.module("sgfwebdevstestapp").controller("ColorController", function($scop
     $scope.selectedOrderByField = "name";
     $scope.reversedColorList = reverseFilter($scope.colorList);
 
+    $scope.displayPanel = "list";
+
     $scope.addColorToList = function(colorName, colorHex){
         ColorService.addColor(colorName, colorHex);
     }
@@ -11,4 +13,14 @@ angular.module("sgfwebdevstestapp").controller("ColorController", function($scop
     $scope.deleteColor = function(color){
         ColorService.deleteColor(color.name);
     }
+
+    $scope.editColor = function(color){
+        $scope.selectedColor = color;
+        $scope.displayPanel = "edit";
+    }
+
+    $scope.displayList = function(){
+        $scope.displayPanel = "list";
+    }
+
 });
