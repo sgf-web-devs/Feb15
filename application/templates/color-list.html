@@ -1,0 +1,12 @@
+<add-color-to-list add-color-callback="addColorToList(name, hex)"></add-color-to-list>
+<hr />
+<sort-color-list-selector></sort-color-list-selector>
+
+<table class="table table-condensed tablestriped">
+    <tr style="background-color: {{color.hex}}"  ng-repeat="color in colorList | orderBy:selectedOrderByField | reverse">
+        <td>{{color.name}}</td>
+        <td>{{color.hex}}</td>
+        <td><input type="button" class="btn btn-default" value="Delete" ng-click="deleteColor(color)" /></td>
+        <td><input type="button" class="btn btn-default" value="Edit" ng-click="editColor(color)" /></td>
+    </tr>
+</table>

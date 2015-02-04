@@ -1,0 +1,11 @@
+<form class="well">
+    <div class="form-group">
+        <label>Color Name</label>
+        <input type="text" class="form-control" placeholder="Red" ng-model="selectedColor.name">
+    </div>
+    <div class="form-group">
+        <label>Color Hex</label>
+        <input type="text" class="form-control" placeholder="#FF0000" ng-model="selectedColor.hex">
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="doneEditing()">Done Editing</button>
+</form>

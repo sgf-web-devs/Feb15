@@ -1,10 +1,7 @@
-angular.module("sgfwebdevstestapp").controller("ColorController", function($scope, reverseFilter, ColorService){
+angular.module("sgfwebdevstestapp").controller("ColorListController", function($scope, $location, reverseFilter, ColorService){
 
     $scope.colorList = ColorService.getColorList();
     $scope.selectedOrderByField = "name";
-    $scope.reversedColorList = reverseFilter($scope.colorList);
-
-    $scope.displayPanel = "list";
 
     $scope.addColorToList = function(colorName, colorHex){
         ColorService.addColor(colorName, colorHex);
@@ -15,12 +12,16 @@ angular.module("sgfwebdevstestapp").controller("ColorController", function($scop
     }
 
     $scope.editColor = function(color){
-        $scope.selectedColor = color;
-        $scope.displayPanel = "edit";
+        $location.path("/colors/" + color.name);
     }
 
-    $scope.displayList = function(){
-        $scope.displayPanel = "list";
+});
+
+angular.module("sgfwebdevstestapp").controller("EditColorController", function($scope, $routeParams, $location, reverseFilter, ColorService){
+    $scope.selectedColor = ColorService.getColor($routeParams.colorName);
+
+    $scope.doneEditing = function(){
+        $location.path("/colors");
     }
 
 });
