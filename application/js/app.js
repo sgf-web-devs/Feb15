@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sgfwebdevstestapp', ["ngRoute", "ngResource"]);
+angular.module('sgfwebdevstestapp', ["ngRoute"]);
 
 angular.module('sgfwebdevstestapp').config(function ($routeProvider) {
     $routeProvider.
@@ -8,7 +8,7 @@ angular.module('sgfwebdevstestapp').config(function ($routeProvider) {
             templateUrl: 'templates/color-list.html',
             controller: 'ColorListController'
         }).
-        when('/colors/:colorId', {
+        when('/colors/:colorName', {
             templateUrl: 'templates/edit-color.html',
             controller: 'EditColorController'
         }).

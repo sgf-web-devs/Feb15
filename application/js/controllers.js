@@ -3,29 +3,24 @@ angular.module("sgfwebdevstestapp").controller("ColorListController", function($
     $scope.colorList = ColorService.getColorList();
     $scope.selectedOrderByField = "name";
 
-    $scope.$on('colorListUpdated', function(event) {
-        $scope.colorList = ColorService.getColorList();
-    });
-
     $scope.addColorToList = function(colorName, colorHex){
         ColorService.addColor(colorName, colorHex);
     }
 
     $scope.deleteColor = function(color){
-        ColorService.deleteColor(color.id);
+        ColorService.deleteColor(color.name);
     }
 
     $scope.editColor = function(color){
-        $location.path("/colors/" + color.id);
+        $location.path("/colors/" + color.name);
     }
 
 });
 
 angular.module("sgfwebdevstestapp").controller("EditColorController", function($scope, $routeParams, $location, reverseFilter, ColorService){
-    $scope.selectedColor = ColorService.getColor($routeParams.colorId);
+    $scope.selectedColor = ColorService.getColor($routeParams.colorName);
 
     $scope.doneEditing = function(){
-        ColorService.saveColor($scope.selectedColor);
         $location.path("/colors");
     }
 
